@@ -1,0 +1,7 @@
+portefolio.localhost {
+	root * chemin/vers/portefolio
+	file_server
+}
+todo.localhost {
+	reverse_proxy http://localhost:3001
+}
