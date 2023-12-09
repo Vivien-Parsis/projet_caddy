@@ -28,8 +28,9 @@ CREATE TABLE `todo` (
   `id_todo` int NOT NULL AUTO_INCREMENT,
   `content_todo` varchar(400) DEFAULT NULL,
   `date_todo` date DEFAULT NULL,
+  `done_todo` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id_todo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `todo` (
 
 LOCK TABLES `todo` WRITE;
 /*!40000 ALTER TABLE `todo` DISABLE KEYS */;
-INSERT INTO `todo` VALUES (1,'lorem ipsum','2023-12-14'),(2,'todo example','2024-01-21'),(3,'BlaBla','2024-02-10');
+INSERT INTO `todo` VALUES (1,'lorem ipsum','2023-12-14','0'),(2,'todo example','2024-01-21','1'),(3,'BlaBla','2024-02-10','0');
 /*!40000 ALTER TABLE `todo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-08 17:07:25
+-- Dump completed on 2023-12-09 18:57:56
