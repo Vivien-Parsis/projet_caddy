@@ -9,11 +9,9 @@ fastify.register(require('@fastify/static'),{
     prefix: '/',
     decorateReply: true
 })
-fastify.register(require('@fastify/cors'),{origin:"http://localhost:3001"})
 fastify.register(require('@fastify/mysql'), {
     connectionString: `mysql://${login.username}:${login.password}@localhost/caddy_project`
 })
-
 fastify.get('/', (request, reply) => {
     reply.header('Content-Type', 'text/HTML');
     reply.sendFile("public/index.html");
