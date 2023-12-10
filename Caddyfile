@@ -1,5 +1,5 @@
 portefolio.localhost {
-	root * chemin/vers/portefolio
+	root * portefolio
 	file_server
 }
 todo.localhost {
