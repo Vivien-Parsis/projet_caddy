@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     password:login.password,
     multipleStatements: true
 });
-const sqlQueries = fs.readFileSync('mysql/bdd.sql', 'utf-8');
+const sqlQueries = fs.readFileSync('mysql/database.sql', 'utf-8');
 connection.connect((err) => {
     if (err) {
         console.log("error while ending connection to database");
