@@ -7,4 +7,7 @@ Pour lancer le serveur nodejs todo_back <br>
 \> cd todo_back <br>
 \> node index.js <br>
 Pour lancer lancer le serveur caddy <br>
-\> caddy start
+\> caddy start<br>
+Adresse des sites<br>
+portefolio : https://portefolio.localhost<br>
+todo : https://todo.localhost
