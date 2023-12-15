@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  caddy_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caddy_server
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+
+  node_app:
+    build:
+      context: .
+      dockerfile: todo_back/Dockerfile
+    container_name: node_app
+    restart: always
+    expose:
+      - "4001"
+      - "4002"
+      - "4003"
