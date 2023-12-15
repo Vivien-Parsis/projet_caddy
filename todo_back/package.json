@@ -8,7 +8,10 @@
     "serv2": "node index.js port=4002",
     "serv3": "node index.js port=4003",
     "todo": "concurrently \"npm run serv1\" \"npm run serv2\" \"npm run serv3\"",
-    "todo_nodemon": "concurrently \"npx nodemon -e js index.js port=4001\" \"npx nodemon -e js index.js port=4002\" \"npx nodemon -e js index.js port=4003\""
+    "serv1_nodemon": "npx nodemon -e js index.js -i public/* port=4001",
+    "serv2_nodemon": "npx nodemon -e js index.js -i public/* port=4002",
+    "serv3_nodemon": "npx nodemon -e js index.js -i public/* port=4003",
+    "todo_nodemon": "concurrently \"npm run serv1_nodemon\" \"npm run serv2_nodemon\" \"npm run serv3_nodemon\""
   },
   "author": "",
   "license": "ISC",

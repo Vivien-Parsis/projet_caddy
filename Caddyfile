@@ -11,5 +11,11 @@ todo.localhost {
 		lb_policy round_robin
 		lb_retries 3
 	}
-	encode gzip
+	encode gzip {
+		match {
+			header Content-Type text/*
+			header Content-Type application/javascript*
+			header Content-Type image/*
+		}
+	}
 }
