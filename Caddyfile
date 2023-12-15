@@ -1,7 +1,15 @@
 portefolio.localhost {
 	root * portefolio
 	file_server
+	handle_errors {
+		rewrite * page/error/{err.status_code}.html
+		file_server
+	}
 }
 todo.localhost {
-	reverse_proxy http://localhost:3001
+	reverse_proxy localhost:4001 localhost:4002 localhost:4003 {
+		lb_policy round_robin
+		lb_retries 3
+	}
+	encode gzip
 }

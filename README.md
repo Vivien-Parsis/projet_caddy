@@ -1,15 +1,24 @@
-Pour initialiser la bdd.
-<strong>Verifiez bien que vous avez mit vos log mysql dans todo_back/mysql/bdd.js et dans todo_back/index.js</strong><br>
-\> cd todo_back <br>
-\> node mysql/database.js <br>
-Pour installer les modules nodejs nécessaire pour todo_back<br>
-\> cd todo_back <br>
-\> npm i <br>
-Pour lancer le serveur nodejs todo_back <br>
-\> cd todo_back <br>
-\> node index.js <br>
-Pour lancer lancer le serveur caddy <br>
-\> caddy start<br>
-Adresse des sites<br>
+<h2>Require</h2> 
+nodejs, npm, caddyfile, mysql server
+<h2>Instalation</h2>
+<strong>to install the require node package for todo_back, inside the folder todo_back do</strong><br> 
+[shell] \> npm i<br>
+<strong>to init the database inside todo_back (don't forget to put your own mysql login in todo_back/mysql/database.js and in todo_back/index.js)</strong><br>
+[shell] \> node mysql\database.js <br>
+<h2>Running website</h2>
+<strong>to run caddy server</strong><br>
+[shell] \> caddy start <br>
+<strong>to run all node server</strong><br>
+\> npm run todo<br>
+<strong>if this line not work, use the step below</strong><br>
+<strong>to run nodejs servers, go to folder todo_back and execute in three shell windows</strong><br>
+[shell 1] \> node index.js port=4001 <br>
+[shell 2] \> node index.js port=4002 <br>
+[shell 3] \> node index.js port=4003 <br>
+<strong>or with nodemon</strong><br>
+[shell 1] \> npx nodemon -e js index.js port=4001 <br>
+[shell 2] \> npx nodemon -e js index.js port=4002 <br>
+[shell 3] \> npx nodemon -e js index.js port=4003 <br>
+<h2>Adress</h2>
 portefolio : https://portefolio.localhost<br>
 todo : https://todo.localhost

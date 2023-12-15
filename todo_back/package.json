@@ -4,7 +4,11 @@
   "description": "Node.js package to handle the back of a todo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serv1": "node index.js port=4001",
+    "serv2": "node index.js port=4002",
+    "serv3": "node index.js port=4003",
+    "todo": "concurrently \"npm run serv1\" \"npm run serv2\" \"npm run serv3\"",
+    "todo_nodemon": "concurrently \"npx nodemon -e js index.js port=4001\" \"npx nodemon -e js index.js port=4002\" \"npx nodemon -e js index.js port=4003\""
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +16,7 @@
     "@fastify/cors": "^8.4.2",
     "@fastify/mysql": "^4.2.0",
     "@fastify/static": "^6.12.0",
+    "concurrently": "^8.2.2",
     "fastify": "^4.24.3",
     "mysql": "^2.18.1"
   }

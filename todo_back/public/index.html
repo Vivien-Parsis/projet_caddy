@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
+    <script src="/assets/js/todo.js"></script>
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/assets/img/todo.ico">
+    <link href='https://fonts.googleapis.com/css?family=Lexend' rel='stylesheet'>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
-    
+    <header>
+        <h1>
+            Todo
+        </h1>
+    </header>
+      <div x-data="todo" x-effect="getTodo()">
+        <template x-for="todo in todoList" :key="`${todo.id_todo}`">
+            <div x-bind:class="`todoContainer ${todo.done_todo == '1' ? 'done':'notDone'}`">  
+                <span
+                    x-text="`${todo.content_todo} - ${todo.date_todo != undefined ? todo.date_todo.split('T')[0].split('-')[2]+'-'+todo.date_todo.split('T')[0].split('-')[1]+'-'+todo.date_todo.split('T')[0].split('-')[0]:''}`">
+                </span>
+                <div x-data="modify">
+                    <input type="checkbox" x-init="initDone(todo.done_todo,$el)" @click="changeDone(`${todo.id_todo}`,$el)">
+                    <input type="button" @click="showModify=!showModify" value="modifié">
+                    <div x-show="showModify">
+                        <input type="text" x-model="newContent">
+                        <input type="date" x-model="newDate">
+                        <input type="button" value="modifié" @click="modifyCurrent(`${todo.id_todo}`)">
+                    </div>
+                </div>
+                <input type="button" value="supprimer" @click="removeTodo(`${todo.id_todo}`)">
+            </div>
+        </template>
+        <div class="newTodo">
+            <span>Nouveau todo</span>
+            <textarea x-model="NewContentTodo"></textarea><br>
+            <input x-model="NewDateTodo" type="date">
+            <input type="button" value="envoyer" @click="addTodo()">
+        </div>
+      </div>
 </body>
 </html>

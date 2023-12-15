@@ -1,0 +1,43 @@
+body{
+    margin:0;
+}
+*{
+    font-family: 'Lexend', Arial, Helvetica, sans-serif;
+}
+header{
+    background-color: rgb(163, 163, 112);
+    padding:.5em 0;
+    border-bottom: rgb(45, 45, 45) 3px solid;
+}
+header h1{
+    margin:0;
+    width:100%;
+    text-align: center;
+}
+.todoContainer{
+    padding:.5em;
+    width:calc(100% - 1em);
+    border-bottom: rgb(45, 45, 45) 1px solid;
+}
+.done{
+    background-color: grey;
+}
+.notDone{
+    background-color : rgb(89, 147, 89);
+}
+.newTodo{
+    background-color: rgb(128, 152, 158);
+    padding:.5em;
+    width:calc(100% - 1em);
+}
+.newTodo span{
+    display:block;
+    width:100%;
+}
+a{
+    color:brown;
+    text-decoration: none;
+}
+a:hover{
+    color:rgb(106, 112, 177);
+}
