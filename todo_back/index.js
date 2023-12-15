@@ -13,10 +13,14 @@ fastify.register(require('@fastify/static'),{
 fastify.register(require('@fastify/mysql'), {
     connectionString: `mysql://${login.username}:${login.password}@localhost/caddy_project`
 })
+
+//route for home page
 fastify.get('/', (request, reply) => {
     reply.headers({'Content-Type':'text/HTML','Cache-Control':'max-age=0,public'});
     reply.sendFile("index.html");
 })
+//routes to handle js, css and img assets
+//route to handle js files
 fastify.get('/assets/js/:fileJS', (request, reply) => {
     let fileJS = request.params.fileJS;
     if(!fs.existsSync(`public/assets/js/${fileJS}`) && !fs.existsSync(`public/assets/js/${fileJS.replace('.js','.min.js')}`)){
@@ -29,6 +33,7 @@ fastify.get('/assets/js/:fileJS', (request, reply) => {
     reply.headers({'Content-Type':'application/javascript','Cache-Control':'max-age=7890000,private'});
     reply.sendFile(`assets/js/${fileJS}`);
 })
+//route to handle css files
 fastify.get('/assets/css/:fileCSS', (request, reply) => {
     let fileCSS = request.params.fileCSS;
     if(!fs.existsSync(`public/assets/css/${fileCSS}`) && !fs.existsSync(`public/assets/css/${fileCSS.replace('.css','.min.css')}`)){
@@ -41,6 +46,7 @@ fastify.get('/assets/css/:fileCSS', (request, reply) => {
     reply.headers({'Content-Type':'text/css','Cache-Control':'max-age=7890000,public'});
     reply.sendFile(`assets/css/${fileCSS}`);
 })
+//route to handle img files
 fastify.get('/assets/img/:fileIMG', (request, reply) => {
     let fileIMG = request.params.fileIMG;
     if(!fs.existsSync(`public/assets/img/${fileIMG}`)){
@@ -54,7 +60,8 @@ fastify.get('/assets/img/:fileIMG', (request, reply) => {
     reply.headers({'Content-Type':mimeType,'Cache-Control':'max-age=0,public'});
     reply.sendFile(`assets/img/${fileIMG}`);
 })
-
+//routes that handle the back of todo
+//route to get all todos
 fastify.get('/api/getTodo', (request, reply) => {
     fastify.mysql.query(
         'SELECT * from todo order by done_todo, date_todo asc',
@@ -63,6 +70,7 @@ fastify.get('/api/getTodo', (request, reply) => {
         }
     )
 })
+//route to add a todo
 fastify.post('/api/addTodo', (request, reply) => {
     let content = request.body.content;
     let date = request.body.date;
@@ -84,6 +92,7 @@ fastify.post('/api/addTodo', (request, reply) => {
         }
     )
 })
+//route to a todo based on an id
 fastify.post('/api/removeTodo', (request, reply) => {
     let id = request.body.id;
     if(id==undefined||id.trim()==''){
@@ -102,6 +111,7 @@ fastify.post('/api/removeTodo', (request, reply) => {
         }
     )
 })
+//route to a modify a todo based on an id
 fastify.post('/api/modifyTodo', (request, reply) => {
     let id = request.body.id;
     let content = request.body.content;
@@ -123,6 +133,7 @@ fastify.post('/api/modifyTodo', (request, reply) => {
         }
     )
 })
+//route to handle to modify only done value based an id
 fastify.post('/api/doneTodo', (request, reply) => {
     let id = request.body.id;
     let done = request.body.done;
@@ -142,10 +153,12 @@ fastify.post('/api/doneTodo', (request, reply) => {
         }
     )
 })
+//route to handle page not found
 fastify.setNotFoundHandler((request, reply) => {
     reply.headers({'Content-Type':'text/HTML','Cache-Control':'max-age=0,public'});
     reply.sendFile("page/404.html");
 })
+
 fastify.listen({ port : currentPort }, (err, address) => {
     if (err) throw err;
     console.log(`listening to ${address}`);

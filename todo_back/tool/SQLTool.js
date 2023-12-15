@@ -32,9 +32,15 @@ const checkDate = (date) => {
     checkMonth(date.split("-")[1]) && checkDay(date.split("-")[2],date.split("-")[1],date.split("-")[0]) ?
     true : false : false : false : false;
 };
+/**
+ * function to check if the input is a valid month number
+ */
 const checkMonth = (month) => {
     return month>=1 && month<=12;
 }
+/**
+ * function to check if the input is a valid day number for a date
+ */
 const checkDay = (day, month, year) => {
     const numberOfDaysPerMonth = {
         "notLeapYear":[31,28,31,30,31,30,31,31,30,31,30,31],
@@ -42,6 +48,9 @@ const checkDay = (day, month, year) => {
     };
     return Number(day) >= 1 && Number(day) <= numberOfDaysPerMonth[`${isLeapYear(year) ? "LeapYear" : "notLeapYear"}`][Number(month) - 1];
 }
+/**
+ * function to check if the input year is a leap year or not
+ */
 const isLeapYear = (year) => {
     return Number(year) % 4 == 0 && Number(year) % 100 != 0 || Number(year) % 400 == 0;
 }
