@@ -36,7 +36,7 @@
         </template>
         <div class="newTodo">
             <span>Nouveau todo</span>
-            <textarea x-model="NewContentTodo"></textarea><br>
+            <input type="text" x-model="NewContentTodo"><br>
             <input x-model="NewDateTodo" type="date">
             <input type="button" value="envoyer" @click="addTodo()">
         </div>

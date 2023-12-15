@@ -4,7 +4,7 @@ nodejs, npm, caddyfile, mysql server
 <strong>to install the require node package for todo_back, inside the folder todo_back do</strong><br> 
 [shell] \> npm i<br>
 <strong>to init the database inside todo_back (don't forget to put your own mysql login in todo_back/mysql/database.js and in todo_back/index.js)</strong><br>
-[shell] \> node mysql\database.js <br>
+[shell] \> node mysql/database.js <br>
 <h2>Running website</h2>
 <strong>to run caddy server</strong><br>
 [shell] \> caddy start <br>
