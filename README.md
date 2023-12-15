@@ -3,7 +3,7 @@ nodejs, npm, caddy, mysql server, (npx optional, require only for nodemon)
 <h2>Instalation</h2>
 <strong>to install the require node package for todo_back, inside the folder todo_back do</strong><br> 
 [shell] \> npm i<br>
-<strong>don't forget to put your mysql login in todo_back/index.js and todo_back/mysql/database.js</strong>
+<strong>don't forget to put your mysql login in todo_back/index.js and todo_back/mysql/database.js and remove "const login = require('./../private/login.json')"</strong>
 <h2>Running website</h2>
 <strong>to run caddy server</strong><br>
 [shell] \> caddy start <br>

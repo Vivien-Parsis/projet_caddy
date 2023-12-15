@@ -1,7 +1,7 @@
-const fastify = require('fastify')({logger: true})
+const fastify = require('fastify')({logger: true});
 const path = require('node:path');
 const fs = require('node:fs');
-const login = require('./../private/login.json');
+const login = require('./private/login.json');
 const SQLTool = require('./tool/SQLTool.js');
 // const login = {
 //     username:"",
