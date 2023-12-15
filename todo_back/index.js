@@ -1,12 +1,9 @@
 const fastify = require('fastify')({logger: true});
 const path = require('node:path');
 const fs = require('node:fs');
-const login = require('./private/login.json');
+const login =  fs.existsSync('./private/login.json') ? require('./private/login.json') 
+: {"username":"","password":""};//put your mysql login here
 const SQLTool = require('./tool/SQLTool.js');
-// const login = {
-//     username:"",
-//     login:""
-// }
 const currentPort = process.argv.length === 3 ? process.argv[2].includes("port=") ? Number.isInteger(Number(process.argv[2].split("=")[1])) ? process.argv[2].split("=")[1]:"3001":"3001":"3001";
 fastify.register(require('@fastify/static'),{ 
     root: path.join(__dirname)+"/public",

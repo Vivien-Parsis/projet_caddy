@@ -1,10 +1,8 @@
 const mysql = require('mysql');
 const fs = require('fs');
-const login = require('./../private/login.json');
-// const login = {
-//     username:"",
-//     login:""
-// }
+const login =  fs.existsSync('./../private/login.json') ? require('./private/login.json') 
+: {"username":"","password":""};//put your mysql login here
+
 const connection = mysql.createConnection({
     host:"localhost",
     user:login.username,
