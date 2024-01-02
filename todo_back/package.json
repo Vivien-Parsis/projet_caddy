@@ -4,6 +4,7 @@
   "description": "Node.js package to handle the back of a todo",
   "main": "index.js",
   "scripts": {
+    "test": "node test/test.js",
     "init_db": "node mysql/database.js",
     "serv1": "node index.js port=4001",
     "serv2": "node index.js port=4002",
@@ -19,7 +20,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fastify/cors": "^8.4.2",
     "@fastify/mysql": "^4.2.0",
     "@fastify/static": "^6.12.0",
     "concurrently": "^8.2.2",

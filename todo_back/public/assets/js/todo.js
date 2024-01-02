@@ -4,13 +4,13 @@ document.addEventListener('alpine:init', () => {
         NewContentTodo : "",
         NewDateTodo : "",
         getTodo(){
-            fetch("https://todo.localhost/api/getTodo",{method:"GET"})
+            fetch("/api/getTodo",{method:"GET"})
             .then(res=>res.json())
             .then(data=>this.todoList=data)
             .catch(err=>console.log(err));
         },
         addTodo(){
-            fetch("https://todo.localhost/api/addTodo",
+            fetch("/api/addTodo",
             {method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({"content":this.NewContentTodo,"date":this.NewDateTodo})})
@@ -19,7 +19,7 @@ document.addEventListener('alpine:init', () => {
             .catch(err=>console.log(err))
         },
         removeTodo(id){
-            fetch("https://todo.localhost/api/removeTodo",
+            fetch("/api/removeTodo",
             {method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({"id":id})})
@@ -27,7 +27,7 @@ document.addEventListener('alpine:init', () => {
             .catch(err=>console.log(err))
         },
         modifyTodo(id,content,date,done){
-            fetch("https://todo.localhost/api/modifyTodo",
+            fetch("/api/modifyTodo",
             {method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({"id":id,"content":content,"date":date,"done":done})})
@@ -35,7 +35,7 @@ document.addEventListener('alpine:init', () => {
             .catch(err=>console.log(err))
         },
         doneTodo(id,done){
-            fetch("https://todo.localhost/api/doneTodo",
+            fetch("/api/doneTodo",
             {method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({"id":id,"done":done})})

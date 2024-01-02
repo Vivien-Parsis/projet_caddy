@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Lexend';
+    src: url("/assets/font/Lexend-Regular.ttf");
+}
 body{
     margin:0;
 }
