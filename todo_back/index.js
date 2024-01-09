@@ -4,7 +4,6 @@ const fs = require('node:fs');
 const login =  fs.existsSync('./private/login.json') ? require('./private/login.json') 
 : {"username":"","password":""};//put your mysql login here
 const SQLTool = require('./tool/SQLTool.js');
-//fix for custom port with npm script in case of nodemon use. The above line dont work in some OS, like debian.
 let currentPort = "3001";
 for(let param of process.argv){
     if(param.match(/port=[0-9][0-9][0-9][0-9]/g)!== null && param.length==9){
@@ -48,7 +47,7 @@ fastify.get('/assets/:type/:file', (request, reply) => {
     const cacheAge = type=="font"?"0":type=="img"?"0":type=="js"?"7890000":type=="css"?"7890000":"0";
     file = fs.existsSync(`public/assets/css/${file.replace('.css','.min.css')}`) ?
     file.replace('.css','.min.css') :
-    fs.existsSync(`public/assets/css/${file.replace('.js','.min.js')}`) ?
+    fs.existsSync(`public/assets/js/${file.replace('.js','.min.js')}`) ?
     file.replace('.js','.min.js') : file;
     if(contentType==""){
         reply.headers({'Content-Type':'text/HTML','Cache-Control':'max-age=0,public'});
